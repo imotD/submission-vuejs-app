@@ -16,20 +16,24 @@ header nav a {
 }
 
 header nav a:hover {
-  color: #0C1E55 !important;
+  color: #3366FF !important;
 }
 
 header nav .btn-download {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   color: #3366FF;
   border-radius: 10px;
   background-color: #F7F8FA;
+  font-size: 18px;
 }
 
 header nav .btn-download ion-icon {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 header nav .btn-download:hover {
@@ -41,19 +45,95 @@ main {
   margin-top: 7rem;
 }
 
+main .title {
+  color: #0C1E55;
+}
+
 main .title__name {
   color: #3366FF;
   font-weight: bold;
 }
 
-main .search__url {
+main .box--icon {
+  color: #CBCCCE;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50px;
+  font-size: 23px;
+}
+
+main .box--icon:focus {
+  color: red;
+}
+
+main .box__url {
   border-radius: 10px;
   background-color: #EDF0F5;
   font-size: 14px;
   width: 100%;
 }
 
-main .search__url:focus {
-  border: red !important;
+main .box__url::-webkit-input-placeholder {
+  color: #CBCCCE;
+}
+
+main .box__url:-ms-input-placeholder {
+  color: #CBCCCE;
+}
+
+main .box__url::-ms-input-placeholder {
+  color: #CBCCCE;
+}
+
+main .box__url::placeholder {
+  color: #CBCCCE;
+}
+
+main .box__url:focus {
+  outline: none;
+}
+
+main .box__search {
+  border-radius: 10px;
+  font-size: 14px;
+  width: 100%;
+  -webkit-box-shadow: 0 2px 7px -4px;
+          box-shadow: 0 2px 7px -4px;
+  -webkit-transition: -webkit-box-shadow .5 ease-in;
+  transition: -webkit-box-shadow .5 ease-in;
+  transition: box-shadow .5 ease-in;
+  transition: box-shadow .5 ease-in, -webkit-box-shadow .5 ease-in;
+}
+
+main .box__search:focus {
+  outline: none;
+  -webkit-box-shadow: 0 3px 10px -4px;
+          box-shadow: 0 3px 10px -4px;
+}
+
+main .box__search::-webkit-input-placeholder {
+  color: #CBCCCE;
+}
+
+main .box__search:-ms-input-placeholder {
+  color: #CBCCCE;
+}
+
+main .box__search::-ms-input-placeholder {
+  color: #CBCCCE;
+}
+
+main .box__search::placeholder {
+  color: #CBCCCE;
 }
 /*# sourceMappingURL=main.css.map */

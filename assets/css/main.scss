@@ -23,18 +23,20 @@ header {
          color: $txt-grey !important;
 
          &:hover {
-            color: $txt-title !important;
+            color: $h1 !important;
          }
       }
 
       .btn-download {
+         align-items: center;
          display: flex;
          color: $h1;
          border-radius: 10px;
          background-color: $box;
+         font-size: 18px;
 
          ion-icon {
-            font-size: 20px;
+            font-size: 25px;
          }
 
          &:hover {
@@ -49,6 +51,7 @@ main {
    margin-top: 7rem;
 
    .title {
+      color: $txt-title;
 
       &__name {
          color: $h1;
@@ -56,17 +59,55 @@ main {
       }
    }
 
-   .search {
-      &__url {
+   .box {
+      &--icon {
+         color: #CBCCCE;
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 50px;
+         font-size: 23px;
 
+         &:focus {
+            color: red;
+         }
+      }
+
+      &__url {
          border-radius: 10px;
          background-color: $input;
          font-size: 14px;
          width: 100%;
 
+         &::placeholder {
+            color: #CBCCCE;
+         }
+
          &:focus {
-            border: red !important;
+            outline: none;
          }
       }
+
+      &__search {
+         border-radius: 10px;
+         font-size: 14px;
+         width: 100%;
+         box-shadow: 0 2px 7px -4px;
+         transition: box-shadow .5 ease-in;
+
+         &:focus {
+            outline: none;
+            box-shadow: 0 3px 10px -4px;
+            
+         }
+
+         &::placeholder {
+            color: #CBCCCE;
+         }
+      }
+
    }
 }

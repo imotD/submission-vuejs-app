@@ -6,6 +6,7 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+   <link rel="shortcut icon" href="assets/img/favicon.ico">
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -30,19 +31,20 @@
                      <a class="nav-link disabled">Support me on :</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center" href="#">
+                     <a class="nav-link d-flex align-items-center" href="https://www.behance.net/dottomstyleart"
+                        target="_blank" rel="noopener">
                         <ion-icon name="logo-behance" class="pr-2"></ion-icon>
                         Behance
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center" href="#">
+                     <a class="nav-link d-flex align-items-center" href="https://medium.com/@tommyalhamra">
                         <ion-icon name="logo-medium" class="pr-2"></ion-icon>
                         Medium
                      </a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center" href="#">
+                     <a class="nav-link d-flex align-items-center" href="https://github.com/dottomCode" target="_blank" rel="noopener">
                         <ion-icon name="logo-github" class="pr-2"></ion-icon>
                         Github
                      </a>
@@ -65,22 +67,29 @@
             <div class="row">
                <div class="col-md-2"><img src="assets/img/logo.png" class="img-fluid" alt="img-logo"></div>
                <div class="col-md align-self-end">
-                  <p class="title__name h1">Name App</p>
+                  <p class="title__name h1">FindText</p>
                   Find the information you want in seconds amet, consetetur sadipscing elitr, sed diam nonumy eirmod et
                   accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
                   ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur.
                </div>
             </div>
          </section>
-         <secttion class="search">
-            <div class="row">
-               <div class="col-12">
-                  <input type="text" class="border-0 py-3 search__url" placeholder="Hi , paste your video url here">
-               </div>
-               <div class="row">
-                  <div class="col-12">
-                     <input type="text" class="border-0 py-3 search__url" placeholder="Search what you want">
+
+         <secttion class="box">
+            <div class="row justify-content-center">
+               <div class="col-12 mb-5">
+                  <div class="box--icon">
+                     <ion-icon name="globe-outline"></ion-icon>
                   </div>
+                  <input type="text" class="border-0 py-3 pl-5 px-4 box__url"
+                     placeholder="Hi , paste your video url here">
+               </div>
+
+               <div class="col-8">
+                  <div class="box--icon">
+                     <ion-icon name="search-outline"></ion-icon>
+                  </div>
+                  <input type="text" class="border-0 py-3 pl-5 px-4 box__search" placeholder="Search what you want..">
                </div>
             </div>
          </secttion>
