@@ -54,7 +54,7 @@ main .title__name {
   font-weight: bold;
 }
 
-main .box--icon {
+main .box__icon {
   color: #CBCCCE;
   position: absolute;
   top: 0;
@@ -72,8 +72,12 @@ main .box--icon {
   font-size: 23px;
 }
 
-main .box--icon:focus {
-  color: red;
+main .box__icon.icon--left {
+  left: 15px;
+}
+
+main .box__icon.icon--right {
+  right: 15px;
 }
 
 main .box__url {

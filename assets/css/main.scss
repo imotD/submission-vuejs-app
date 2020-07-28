@@ -12,6 +12,7 @@ $h1 : #3366FF;
 $txt-title :#0C1E55;
 $txt-grey :#DCDEE2;
 $input: #EDF0F5;
+$ping: #FF3D71;
 
 body {
    font-family: 'Poppins', sans-serif;
@@ -60,7 +61,7 @@ main {
    }
 
    .box {
-      &--icon {
+      &__icon {
          color: #CBCCCE;
          position: absolute;
          top: 0;
@@ -71,8 +72,12 @@ main {
          width: 50px;
          font-size: 23px;
 
-         &:focus {
-            color: red;
+         &.icon--left {
+            left: 15px;
+         }
+
+         &.icon--right {
+            right: 15px;
          }
       }
 
@@ -101,7 +106,7 @@ main {
          &:focus {
             outline: none;
             box-shadow: 0 3px 10px -4px;
-            
+
          }
 
          &::placeholder {

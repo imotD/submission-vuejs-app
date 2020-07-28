@@ -16,100 +16,228 @@
 </head>
 
 <body>
-   <header>
-      <nav class="navbar navbar-expand-lg bg-white py-4">
+   <div id="app">
+      <header>
+         <nav class="navbar navbar-expand-lg bg-white py-4">
+            <div class="container">
+               <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+
+               <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto align-items-center">
+                     <li class="nav-item">
+                        <a class="nav-link disabled">Support me on :</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="https://www.behance.net/dottomstyleart"
+                           target="_blank" rel="noopener">
+                           <ion-icon name="logo-behance" class="pr-2"></ion-icon>
+                           Behance
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="https://medium.com/@tommyalhamra">
+                           <ion-icon name="logo-medium" class="pr-2"></ion-icon>
+                           Medium
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="https://github.com/dottomCode"
+                           target="_blank" rel="noopener">
+                           <ion-icon name="logo-github" class="pr-2"></ion-icon>
+                           Github
+                        </a>
+                     </li>
+                  </ul>
+                  <div>
+                     <button class="btn btn-download px-4" @click="linkDownload">
+                        <ion-icon name="download-outline" class="pr-2"></ion-icon>
+                        Download
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </nav>
+      </header>
+
+      <main>
          <div class="container">
-            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
-               <ul class="navbar-nav mr-auto align-items-center">
-                  <li class="nav-item">
-                     <a class="nav-link disabled">Support me on :</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center" href="https://www.behance.net/dottomstyleart"
-                        target="_blank" rel="noopener">
-                        <ion-icon name="logo-behance" class="pr-2"></ion-icon>
-                        Behance
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center" href="https://medium.com/@tommyalhamra">
-                        <ion-icon name="logo-medium" class="pr-2"></ion-icon>
-                        Medium
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center" href="https://github.com/dottomCode" target="_blank" rel="noopener">
-                        <ion-icon name="logo-github" class="pr-2"></ion-icon>
-                        Github
-                     </a>
-                  </li>
-               </ul>
-               <div>
-                  <button class="btn btn-download px-4">
-                     <ion-icon name="download-outline" class="pr-2"></ion-icon>
-                     Download
-                  </button>
+            <section class="title mb-5">
+               <div class="row">
+                  <div class="col-md-2"><img src="assets/img/logo.png" class="img-fluid" alt="img-logo"></div>
+                  <div class="col-md align-self-end">
+                     <p class="title__name h1">FindText</p>
+                     Find the information you want in seconds amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                     et
+                     accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                     Lorem
+                     ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur.
+                  </div>
                </div>
-            </div>
+            </section>
+
+            <secttion class="box">
+               <div class="row justify-content-center">
+                  <div class="col-12 mb-5">
+                     <div class="box__icon icon--left">
+                        <ion-icon name="globe-outline"></ion-icon>
+                     </div>
+                     <input type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__url"
+                        placeholder="Hi , paste your video url here" v-model="url">
+                     <div @click="clear" class="box__icon icon--right">
+                        <ion-icon name="close-circle-outline"></ion-icon>
+                     </div>
+                  </div>
+
+                  <div class="col-8">
+                     <div class="box__icon icon--left">
+                        <ion-icon name="search-outline"></ion-icon>
+                     </div>
+                     <input v-model="keyword" type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__search"
+                        placeholder="Search what you want..">
+                     <div @click="clear" class="box__icon icon--right">
+                        <ion-icon name="close-circle-outline"></ion-icon>
+                     </div>
+                  </div>
+               </div>
+            </secttion>
+
+            <section class="result mt-5">
+
+               <div class="row justify-content-center">
+                  <div class="col-8">
+                     <p>Halaman ke : {{pagination.page}}</p>
+                     <ul>
+                        <li v-for="(viewResult, i) in listResults" :key='i'>
+                           <span v-html="viewResult.text"></span>
+                           <a :href="`${url}&t=${viewResult.start}s`" target="_blank">Youtube</a>
+                        </li>
+                     </ul>
+
+                     <div class="row align-items-center">
+                        <div class="col">
+                           Total Hasil: {{pagination.total}}
+                        </div>
+
+                        <div class="col text-center">
+                           <button @click='btnFirst' :disabled="!pagination.first"
+                              class="btn btn-primary">First</button>
+                           <button @click='btnPrev' :disabled="!pagination.prev" class="btn btn-primary">Prev</button>
+                           <button @click='btnNext' :disabled="!pagination.next" class="btn btn-primary">Next</button>
+                           <button @click='btnLast' :disabled="!pagination.last" class="btn btn-primary">Last</button>
+                        </div>
+                     </div>
+
+                  </div>
+               </div>
+
+
+            </section>
+
+            <pre class="mt-5">
+               {{ changeToString (pagination) }}
+            </pre>
+            <pre class="mt-5">
+               {{ changeToString (listResults) }}
+            </pre>
          </div>
-      </nav>
-   </header>
+      </main>
 
-   <main>
-      <div class="container">
-         <section class="title mb-5">
-            <div class="row">
-               <div class="col-md-2"><img src="assets/img/logo.png" class="img-fluid" alt="img-logo"></div>
-               <div class="col-md align-self-end">
-                  <p class="title__name h1">FindText</p>
-                  Find the information you want in seconds amet, consetetur sadipscing elitr, sed diam nonumy eirmod et
-                  accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                  ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur.
-               </div>
-            </div>
-         </section>
+      <footer>
+      </footer>
 
-         <secttion class="box">
-            <div class="row justify-content-center">
-               <div class="col-12 mb-5">
-                  <div class="box--icon">
-                     <ion-icon name="globe-outline"></ion-icon>
-                  </div>
-                  <input type="text" class="border-0 py-3 pl-5 px-4 box__url"
-                     placeholder="Hi , paste your video url here">
-               </div>
-
-               <div class="col-8">
-                  <div class="box--icon">
-                     <ion-icon name="search-outline"></ion-icon>
-                  </div>
-                  <input type="text" class="border-0 py-3 pl-5 px-4 box__search" placeholder="Search what you want..">
-               </div>
-            </div>
-         </secttion>
-      </div>
-   </main>
-   <footer>
-
-   </footer>
+   </div>
 
    <!-- Optional JavaScript -->
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
    </script>
-   <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+   <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
    </script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+   </script>
+   <script src="assets/js/script.js"></script>
+   <script>
+      new Vue({
+         el: '#app',
+         data: {
+            url: 'https://www.youtube.com/watch?v=klnvttPfOUM',
+            keyword: '',
+            listResults: [],
+            pagination: {
+               first: null,
+               last: null,
+               prev: null,
+               next: null,
+               total: 0,
+               page: null
+            }
+         },
+         computed: {
+            changeToString() {
+               return (params) => {
+                  return JSON.stringify(params, null, 2)
+               }
+            }
+         },
+         watch: {
+            keyword: pDebounce(function keyword(keyword) {
+               this.search(keyword, this.url)
+            }, 250)
+         },
+         methods: {
+            async search(keyword, url, pagination) {
+
+               let urlAPI =
+                  `https://cari-teks-video-api.vercel.app/api/search?q=${keyword}&url=${encodeURIComponent(url)}`
+
+               if (pagination) {
+                  urlAPI = pagination
+               }
+
+               const res = await fetch(urlAPI).then(res => {
+                  if (res.ok) {
+                     return res.json()
+                  }
+                  return []
+               })
+
+               this.listResults = res.data
+               this.pagination.first = res.first
+               this.pagination.last = res.last
+               this.pagination.prev = res.prev
+               this.pagination.next = res.next
+               this.pagination.total = res.total
+               this.pagination.page = res.page
+            },
+            linkDownload() {
+               location.href = 'https://github.com/dottomCode/submission-vuejs-app'
+            },
+            clear() {
+               // TODO untuk bersihkan
+            },
+            btnFirst() {
+               this.search(this.keyword, this.url, this.pagination.first)
+            },
+            btnPrev() {
+               this.search(this.keyword, this.url, this.pagination.prev)
+            },
+            btnNext() {
+               this.search(this.keyword, this.url, this.pagination.next)
+            },
+            btnLast() {
+               this.search(this.keyword, this.url, this.pagination.last)
+            }
+         }
+      });
    </script>
 </body>
 
