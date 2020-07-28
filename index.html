@@ -88,7 +88,7 @@
                      <input type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__url"
                         placeholder="Hi , paste your video url here" v-model="url">
                      <div @click="clear" class="box__icon icon--right">
-                        <ion-icon name="close-circle-outline"></ion-icon>
+                        <ion-icon class="url" name="close-outline" size="small"></ion-icon>
                      </div>
                   </div>
 
@@ -99,13 +99,13 @@
                      <input v-model="keyword" type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__search"
                         placeholder="Search what you want..">
                      <div @click="clear" class="box__icon icon--right">
-                        <ion-icon name="close-circle-outline"></ion-icon>
+                        <ion-icon class="keyword" name="close-outline" size="small"></ion-icon>
                      </div>
                   </div>
                </div>
             </secttion>
 
-            <section class="result mt-5">
+            <section class="result my-5">
 
                <div class="row justify-content-center">
                   <div class="col-8">
@@ -123,30 +123,47 @@
                         </div>
 
                         <div class="col text-center">
-                           <button @click='btnFirst' :disabled="!pagination.first"
+                           <button @click="navigasi('first')" :disabled="!pagination['first']"
                               class="btn btn-primary">First</button>
-                           <button @click='btnPrev' :disabled="!pagination.prev" class="btn btn-primary">Prev</button>
-                           <button @click='btnNext' :disabled="!pagination.next" class="btn btn-primary">Next</button>
-                           <button @click='btnLast' :disabled="!pagination.last" class="btn btn-primary">Last</button>
+                           <button @click="navigasi('prev')" :disabled="!pagination['prev']"
+                              class="btn btn-primary">Prev</button>
+                           <button @click="navigasi('next')" :disabled="!pagination['next']"
+                              class="btn btn-primary">Next</button>
+                           <button @click="navigasi('last')" :disabled="!pagination['last']"
+                              class="btn btn-primary">Last</button>
                         </div>
                      </div>
 
                   </div>
                </div>
 
-
             </section>
 
-            <pre class="mt-5">
+            <!-- <pre class="mt-5">
                {{ changeToString (pagination) }}
             </pre>
             <pre class="mt-5">
                {{ changeToString (listResults) }}
-            </pre>
+            </pre> -->
          </div>
       </main>
 
-      <footer>
+      <footer class="py-3">
+         <div class="container">
+            <div class="row">
+               <div class="col">
+                  FindText
+               </div>
+            </div>
+            <div class="row">
+               <div class="col">
+                  Released under MIT License | Copyright @ 2020
+               </div>
+               <div class="col text-right">
+                  designed by <a href="https://www.instagram.com/tommyalhamra/">imotD</a>
+               </div>
+            </div>
+         </div>
       </footer>
 
    </div>
@@ -189,52 +206,58 @@
             }
          },
          watch: {
-            keyword: pDebounce(function keyword(keyword) {
-               this.search(keyword, this.url)
+            keyword: pDebounce(async function handleKeyword(keyword) {
+               if (keyword && keyword.length >= 3) {
+                  await this.search(keyword, this.url)
+               } else {
+                  this.clearAll()
+               }
             }, 250)
          },
          methods: {
             async search(keyword, url, pagination) {
+               try {
+                  const res = await fetch(
+                     pagination ?
+                     pagination :
+                     `https://cari-teks-video-api.vercel.app/api/search?q=${keyword}&url=${encodeURIComponent(url)}`
+                  ).then(_ => (_.ok ? _.json() : []))
 
-               let urlAPI =
-                  `https://cari-teks-video-api.vercel.app/api/search?q=${keyword}&url=${encodeURIComponent(url)}`
+                  this.listResults = res.data
+                  this.pagination.first = res.first
+                  this.pagination.last = res.last
+                  this.pagination.prev = res.prev
+                  this.pagination.next = res.next
+                  this.pagination.total = res.total
+                  this.pagination.page = res.page
 
-               if (pagination) {
-                  urlAPI = pagination
+               } catch (error) {
+
                }
-
-               const res = await fetch(urlAPI).then(res => {
-                  if (res.ok) {
-                     return res.json()
-                  }
-                  return []
-               })
-
-               this.listResults = res.data
-               this.pagination.first = res.first
-               this.pagination.last = res.last
-               this.pagination.prev = res.prev
-               this.pagination.next = res.next
-               this.pagination.total = res.total
-               this.pagination.page = res.page
+            },
+            async navigasi(type) {
+               if (!this.pagination[type]) {
+                  return
+               }
+               await this.search(this.keyword, this.url, this.pagination[type])
             },
             linkDownload() {
                location.href = 'https://github.com/dottomCode/submission-vuejs-app'
             },
             clear() {
-               // TODO untuk bersihkan
+               this.keyword = ''
+               this.clearAll()
             },
-            btnFirst() {
-               this.search(this.keyword, this.url, this.pagination.first)
-            },
-            btnPrev() {
-               this.search(this.keyword, this.url, this.pagination.prev)
-            },
-            btnNext() {
-               this.search(this.keyword, this.url, this.pagination.next)
-            },
-            btnLast() {
-               this.search(this.keyword, this.url, this.pagination.last)
+            clearAll() {
+               this.listResults = []
+               this.pagination = {
+                  first: null,
+                  last: null,
+                  prev: null,
+                  next: null,
+                  total: 0,
+                  page: null
+               }
             }
          }
       });

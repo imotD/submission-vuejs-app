@@ -78,6 +78,35 @@ main {
 
          &.icon--right {
             right: 15px;
+
+            .url {
+               border-radius: 50%;
+               height: 20px;
+               width: 20px;
+               color: #b6bdca;
+            }
+
+            .keyword {
+               background-color: $box;
+               border-radius: 50%;
+               height: 20px;
+               width: 20px;
+               color: #b6bdca;
+
+            }
+
+            &:hover {
+               cursor: pointer;
+
+               .keyword {
+                  background-color: #edf1f9;
+               }
+
+               .url {
+                  background-color: #d8deeb;
+                  color: white;
+               }
+            }
          }
       }
 
@@ -114,5 +143,19 @@ main {
          }
       }
 
+   }
+}
+
+footer {
+   background-color: $h1;
+   color: white;
+   font-size: 12px;
+
+   a {
+      color: yellow;
+
+      &:hover {
+         color: $ping;
+      }
    }
 }

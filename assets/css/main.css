@@ -80,6 +80,34 @@ main .box__icon.icon--right {
   right: 15px;
 }
 
+main .box__icon.icon--right .url {
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  color: #b6bdca;
+}
+
+main .box__icon.icon--right .keyword {
+  background-color: #F7F8FA;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  color: #b6bdca;
+}
+
+main .box__icon.icon--right:hover {
+  cursor: pointer;
+}
+
+main .box__icon.icon--right:hover .keyword {
+  background-color: #edf1f9;
+}
+
+main .box__icon.icon--right:hover .url {
+  background-color: #d8deeb;
+  color: white;
+}
+
 main .box__url {
   border-radius: 10px;
   background-color: #EDF0F5;
@@ -139,5 +167,19 @@ main .box__search::-ms-input-placeholder {
 
 main .box__search::placeholder {
   color: #CBCCCE;
+}
+
+footer {
+  background-color: #3366FF;
+  color: white;
+  font-size: 12px;
+}
+
+footer a {
+  color: yellow;
+}
+
+footer a:hover {
+  color: #FF3D71;
 }
 /*# sourceMappingURL=main.css.map */
