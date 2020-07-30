@@ -58,6 +58,10 @@ main {
          color: $h1;
          font-weight: bold;
       }
+
+      span {
+         color: $ping;
+      }
    }
 
    .box {
@@ -144,12 +148,51 @@ main {
       }
 
    }
+
+   .result {
+      &__pagination {
+
+         &--btn {
+            .btn-ic {
+               border-color: $box;
+               
+               margin: 0 3px;
+
+               &:disabled {
+                  background-color: $box;
+               }
+
+               &:hover {
+                  background-color: white;
+                  border-radius: 10px;
+                  box-shadow: 0 2px 10px -6px;
+               }
+
+               &:active{
+                  color: white;
+                  background-color: $h1;
+               }
+            }
+         }
+      }
+   }
 }
 
 footer {
+   position: relative;
    background-color: $h1;
    color: white;
    font-size: 12px;
+   margin-top: 25rem;
+
+   .brand--img {
+      position: absolute;
+      margin-bottom: 6rem;
+      bottom: 0;
+      z-index: -1;
+      right: 7rem;
+      transform: scaleX(-1);
+   }
 
    a {
       color: yellow;

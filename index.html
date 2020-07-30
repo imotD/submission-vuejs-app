@@ -69,7 +69,7 @@
                <div class="row">
                   <div class="col-md-2"><img src="assets/img/logo.png" class="img-fluid" alt="img-logo"></div>
                   <div class="col-md align-self-end">
-                     <p class="title__name h1">FindText</p>
+                     <p class="title__name h1">Find<span>T</span>ext</p>
                      Find the information you want in seconds amet, consetetur sadipscing elitr, sed diam nonumy eirmod
                      et
                      accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
@@ -109,7 +109,6 @@
 
                <div class="row justify-content-center">
                   <div class="col-8">
-                     <p>Halaman ke : {{pagination.page}}</p>
                      <ul>
                         <li v-for="(viewResult, i) in listResults" :key='i'>
                            <span v-html="viewResult.text"></span>
@@ -117,26 +116,38 @@
                         </li>
                      </ul>
 
-                     <div class="row align-items-center">
+                     <div class="row align-items-center result__pagination">
                         <div class="col">
-                           Total Hasil: {{pagination.total}}
+                           <!-- Total Result: {{pagination.total}} -->
+                           <p class="mb-0">Page {{pagination.page}} of {{pagination.total}} </p>
                         </div>
 
-                        <div class="col text-center">
+                        <div class="col text-right result__pagination--btn d-flex justify-content-end">
                            <button @click="navigasi('first')" :disabled="!pagination['first']"
-                              class="btn btn-primary">First</button>
+                              class="btn btn-ic d-flex align-items-center">
+                              <ion-icon name="caret-back-outline"></ion-icon><span class="pl-2">First</span>
+                           </button>
+
                            <button @click="navigasi('prev')" :disabled="!pagination['prev']"
-                              class="btn btn-primary">Prev</button>
+                              class="btn btn-ic d-flex align-items-center">
+                              <ion-icon name="chevron-back-outline"></ion-icon>
+                           </button>
+
                            <button @click="navigasi('next')" :disabled="!pagination['next']"
-                              class="btn btn-primary">Next</button>
+                              class="btn btn-ic d-flex align-items-center">
+                              <ion-icon name="chevron-forward-outline"></ion-icon>
+                           </button>
+
                            <button @click="navigasi('last')" :disabled="!pagination['last']"
-                              class="btn btn-primary">Last</button>
+                              class="btn btn-ic d-flex align-items-center">
+                              <span class="pr-2">Last</span>
+                              <ion-icon name="caret-forward-outline"></ion-icon>
+                           </button>
                         </div>
                      </div>
 
                   </div>
                </div>
-
             </section>
 
             <!-- <pre class="mt-5">
@@ -150,6 +161,9 @@
 
       <footer class="py-3">
          <div class="container">
+            <div class="brand--img">
+               <img src="assets/img/res-img.png" alt="img">
+            </div>
             <div class="row">
                <div class="col">
                   FindText
@@ -160,7 +174,7 @@
                   Released under MIT License | Copyright @ 2020
                </div>
                <div class="col text-right">
-                  designed by <a href="https://www.instagram.com/tommyalhamra/">imotD</a>
+                  Made with &#128151; by <a href="https://www.instagram.com/tommyalhamra/">imotD</a>
                </div>
             </div>
          </div>
