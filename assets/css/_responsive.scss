@@ -1,0 +1,31 @@
+$box : #F7F8FA;
+$h1 : #3366FF;
+$txt-title :#0C1E55;
+$txt-grey :#DCDEE2;
+$input: #EDF0F5;
+$ping: #FF3D71;
+
+@media (min-width: 768px) and (max-width: 991.98px) {}
+
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
+@media (max-width: 767px) {
+   header {
+      nav {
+         a {
+            color: $h1 !important;
+            font-size: 20px;
+         }
+
+         .navbar-brand {
+            color: $h1 !important;
+
+            span {
+               color: $ping;
+            }
+         }
+      }
+   }
+}
+
+@media (max-width: 575.98px) {}
