@@ -26,6 +26,32 @@ $ping: #FF3D71;
          }
       }
    }
+
+   main {
+      .title {
+         img {
+            width: 100px;
+         }
+      }
+   }
+
+   footer {
+      .brand--img {
+         right: 0;
+      }
+   }
 }
 
-@media (max-width: 575.98px) {}
+@media (max-width: 575.98px) {
+   footer {
+      .brand--img {
+         img {
+            width: 15rem;
+         }
+      }
+   }
+}
+
+@media(max-width: 425px) {
+   
+}

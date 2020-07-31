@@ -219,4 +219,29 @@ footer a {
 footer a:hover {
   color: #FF3D71;
 }
+
+@media (max-width: 767px) {
+  header nav a {
+    color: #3366FF !important;
+    font-size: 20px;
+  }
+  header nav .navbar-brand {
+    color: #3366FF !important;
+  }
+  header nav .navbar-brand span {
+    color: #FF3D71;
+  }
+  main .title img {
+    width: 100px;
+  }
+  footer .brand--img {
+    right: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  footer .brand--img img {
+    width: 15rem;
+  }
+}
 /*# sourceMappingURL=main.css.map */

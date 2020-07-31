@@ -20,39 +20,37 @@
       <header>
          <nav class="navbar navbar-expand-lg bg-white py-4">
             <div class="container">
-               <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-               </button>
+               <div class="navbar-collapse d-flex">
+                  <a class="navbar-brand d-md-none d-block mr-auto" href="#">
+                     Find<span>T</span>ext
+                  </a>
 
-               <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto align-items-center">
-                     <li class="nav-item">
+                  <ul class="navbar-nav flex-row mr-md-auto align-items-center">
+                     <li class="nav-item d-md-block d-none">
                         <a class="nav-link disabled">Support me on :</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="https://www.behance.net/dottomstyleart"
+                        <a class="nav-link d-flex align-items-center px-2" href="https://www.behance.net/dottomstyleart"
                            target="_blank" rel="noopener">
                            <ion-icon name="logo-behance" class="pr-2"></ion-icon>
-                           Behance
+                           <span class=" d-md-block d-none">Behance</span>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="https://medium.com/@tommyalhamra">
+                        <a class="nav-link d-flex align-items-center px-2" href="https://medium.com/@tommyalhamra">
                            <ion-icon name="logo-medium" class="pr-2"></ion-icon>
-                           Medium
+                           <span class=" d-md-block d-none">Medium</span>
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="https://github.com/dottomCode"
+                        <a class="nav-link d-flex align-items-center px-2" href="https://github.com/dottomCode"
                            target="_blank" rel="noopener">
                            <ion-icon name="logo-github" class="pr-2"></ion-icon>
-                           Github
+                           <span class=" d-md-block d-none">Github</span>
                         </a>
                      </li>
                   </ul>
-                  <div>
+                  <div class="d-none d-md-block">
                      <button class="btn btn-download px-4" @click="linkDownload">
                         <ion-icon name="download-outline" class="pr-2"></ion-icon>
                         Download
@@ -70,18 +68,15 @@
                   <div class="col-md-2"><img src="assets/img/logo.png" class="img-fluid" alt="img-logo"></div>
                   <div class="col-md align-self-end">
                      <p class="title__name h1">Find<span>T</span>ext</p>
-                     Find the information you want in seconds amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                     et
-                     accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-                     Lorem
-                     ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur.
+                     <p>Find the information you want in seconds</p>
+                     FindText is a video text search site created specifically by <a href="https://github.com/jefrydco/awesome-cari-teks-video">Jefry Dewangga</a>. This is the basic submission of the vuejs webinar. and this is my one-page application. The deadline is August 8, 2020. I hope I can be chosen as the best . Everything I do is documented in the medium and I upload the design in the behance. thank you
                   </div>
                </div>
             </section>
 
             <secttion class="box">
                <div class="row justify-content-center">
-                  <div class="col-12 mb-5">
+                  <div class="col-12 mb-lg-5 mb-md-4 mb-3">
                      <div class="box__icon icon--left">
                         <ion-icon name="globe-outline"></ion-icon>
                      </div>
@@ -92,7 +87,7 @@
                      </div>
                   </div>
 
-                  <div class="col-8">
+                  <div class="col-lg-8 col">
                      <div class="box__icon icon--left">
                         <ion-icon name="search-outline"></ion-icon>
                      </div>
@@ -108,7 +103,7 @@
             <section v-show="searchResult" class="result my-5">
 
                <div class="row justify-content-center">
-                  <div class="col-8">
+                  <div class="col-lg-8">
                      <ul>
                         <li v-for="(viewResult, i) in listResults" :key='i'>
                            <span v-html="viewResult.text"></span>
@@ -170,10 +165,10 @@
                </div>
             </div>
             <div class="row">
-               <div class="col">
+               <div class="col-md-8 col-12">
                   Released under MIT License | Copyright @ 2020
                </div>
-               <div class="col text-right">
+               <div class="col-md-4 col-12 text-md-right text-left">
                   Made with &#128151; by <a href="https://www.instagram.com/tommyalhamra/">imotD</a>
                </div>
             </div>
@@ -262,7 +257,7 @@
             linkDownload() {
                location.href = 'https://github.com/dottomCode/submission-vuejs-app'
             },
-            clearUrl(){
+            clearUrl() {
                this.url = ' '
             },
             clear() {
