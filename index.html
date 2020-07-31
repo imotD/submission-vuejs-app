@@ -87,7 +87,7 @@
                      </div>
                      <input type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__url"
                         placeholder="Hi , paste your video url here" v-model="url">
-                     <div @click="clear" class="box__icon icon--right">
+                     <div @click="clearUrl" class="box__icon icon--right">
                         <ion-icon class="url" name="close-outline" size="small"></ion-icon>
                      </div>
                   </div>
@@ -105,7 +105,7 @@
                </div>
             </secttion>
 
-            <section class="result my-5">
+            <section v-show="searchResult" class="result my-5">
 
                <div class="row justify-content-center">
                   <div class="col-8">
@@ -201,6 +201,8 @@
          el: '#app',
          data: {
             url: 'https://www.youtube.com/watch?v=klnvttPfOUM',
+            searchResult: false,
+            // url: '',
             keyword: '',
             listResults: [],
             pagination: {
@@ -225,6 +227,7 @@
                   await this.search(keyword, this.url)
                } else {
                   this.clearAll()
+                  this.searchResult = false
                }
             }, 250)
          },
@@ -237,6 +240,7 @@
                      `https://cari-teks-video-api.vercel.app/api/search?q=${keyword}&url=${encodeURIComponent(url)}`
                   ).then(_ => (_.ok ? _.json() : []))
 
+                  this.searchResult = true
                   this.listResults = res.data
                   this.pagination.first = res.first
                   this.pagination.last = res.last
@@ -257,6 +261,9 @@
             },
             linkDownload() {
                location.href = 'https://github.com/dottomCode/submission-vuejs-app'
+            },
+            clearUrl(){
+               this.url = ' '
             },
             clear() {
                this.keyword = ''
