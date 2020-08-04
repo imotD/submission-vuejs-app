@@ -210,6 +210,7 @@ footer .brand--img {
   right: 7rem;
   -webkit-transform: scaleX(-1);
           transform: scaleX(-1);
+  opacity: .1;
 }
 
 footer a {
