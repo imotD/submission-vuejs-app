@@ -12,7 +12,7 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
    <link rel="stylesheet" href="assets/css/main.css">
 
-   <title>Submission</title>
+   <title>Submission - FindText</title>
 </head>
 
 <body>
@@ -78,7 +78,7 @@
                </div>
             </section>
 
-            <secttion class="box">
+            <section class="box">
                <div class="row justify-content-center">
                   <div class="col-12 mb-lg-5 mb-md-4 mb-3">
                      <input type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__url"
@@ -96,7 +96,7 @@
                   <div class="col-lg-8 col">
                      <input v-model="keyword" type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__search"
                         placeholder="Search what you want..">
-                        
+
                      <div class="box__icon icon--left">
                         <ion-icon name="search-outline"></ion-icon>
                      </div>
@@ -106,42 +106,49 @@
                      </div>
                   </div>
                </div>
-            </secttion>
+            </section>
 
             <section v-show="searchResult" class="result my-5">
 
                <div class="row justify-content-center">
                   <div class="col-lg-8">
-                     <ul>
-                        <li v-for="(viewResult, i) in listResults" :key='i'>
-                           <span v-html="viewResult.text"></span>
-                           <a :href="`${url}&t=${viewResult.start}s`" target="_blank">Youtube</a>
+                     <div class="alert alert-primary" role="alert" v-if="pagination.total >= 1 ">
+                        🤩 Gotcha! <b>{{pagination.total}} </b> word results found in FindText
+                     </div>
+                     <div class="alert alert-danger" role="alert" v-else>
+                        🙏 Sorry, the word is not available
+                     </div>   
+                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-item-action" v-for="(viewResult, i) in listResults"
+                           :key='i'>
+                           <a :href="`${url}&t=${viewResult.start}s`" target="_blank" style="color:#0C1E55 ;">
+                              <span v-html="viewResult.text"></span>
+                           </a>
                         </li>
                      </ul>
 
-                     <div class="row align-items-center result__pagination">
+                     <div class="py-2 row align-items-center result__pagination" v-if="pagination.total >= 1">
                         <div class="col">
-                           <!-- Total Result: {{pagination.total}} -->
-                           <p class="mb-0">Page {{pagination.page}} of {{pagination.total}} </p>
+                           <p class="mb-0">Page {{pagination.page}} of {{pagination.pageLast}} </p>
                         </div>
 
                         <div class="col text-right result__pagination--btn d-flex justify-content-end">
-                           <button @click="navigasi('first')" :disabled="!pagination['first']"
+                           <button @click="navigation('first')" :disabled="!pagination['first']"
                               class="btn btn-ic d-flex align-items-center">
                               <ion-icon name="caret-back-outline"></ion-icon><span class="pl-2">First</span>
                            </button>
 
-                           <button @click="navigasi('prev')" :disabled="!pagination['prev']"
+                           <button @click="navigation('prev')" :disabled="!pagination['prev']"
                               class="btn btn-ic d-flex align-items-center">
                               <ion-icon name="chevron-back-outline"></ion-icon>
                            </button>
 
-                           <button @click="navigasi('next')" :disabled="!pagination['next']"
+                           <button @click="navigation('next')" :disabled="!pagination['next']"
                               class="btn btn-ic d-flex align-items-center">
                               <ion-icon name="chevron-forward-outline"></ion-icon>
                            </button>
 
-                           <button @click="navigasi('last')" :disabled="!pagination['last']"
+                           <button @click="navigation('last')" :disabled="!pagination['last']"
                               class="btn btn-ic d-flex align-items-center">
                               <span class="pr-2">Last</span>
                               <ion-icon name="caret-forward-outline"></ion-icon>
@@ -153,12 +160,15 @@
                </div>
             </section>
 
-            <!-- <pre class="mt-5">
-               {{ changeToString (pagination) }}
-            </pre>
-            <pre class="mt-5">
-               {{ changeToString (listResults) }}
-            </pre> -->
+            <!-- <section class="dev-view">
+                  <pre class="mt-5">
+                     {{ changeToString (pagination)}}
+                  </pre>
+                  <pre class="mt-5">
+                     {{ changeToString (listResults) }}
+                  </pre>
+               </section> -->
+
          </div>
       </main>
 
@@ -203,9 +213,9 @@
       new Vue({
          el: '#app',
          data: {
-            // url: 'https://www.youtube.com/watch?v=klnvttPfOUM',
+            url: 'https://www.youtube.com/watch?v=klnvttPfOUM',
             searchResult: false,
-            url: '',
+            // url: '',
             keyword: '',
             listResults: [],
             pagination: {
@@ -214,7 +224,9 @@
                prev: null,
                next: null,
                total: 0,
-               page: null
+               page: null,
+               pageLast:null,
+
             }
          },
          computed: {
@@ -251,12 +263,13 @@
                   this.pagination.next = res.next
                   this.pagination.total = res.total
                   this.pagination.page = res.page
+                  this.pagination.pageLast = res.last.split('page=').pop().split('&')[0];
 
                } catch (error) {
 
                }
             },
-            async navigasi(type) {
+            async navigation(type) {
                if (!this.pagination[type]) {
                   return
                }
@@ -282,7 +295,8 @@
                   prev: null,
                   next: null,
                   total: 0,
-                  page: null
+                  page: null,
+                  pageLast:null
                }
             }
          }
