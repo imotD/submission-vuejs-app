@@ -119,6 +119,10 @@ main .box__url {
   width: 100%;
 }
 
+main .box__url ~ .icon--left {
+  color: #CBCCCE;
+}
+
 main .box__url::-webkit-input-placeholder {
   color: #CBCCCE;
 }
@@ -139,6 +143,10 @@ main .box__url:focus {
   outline: none;
 }
 
+main .box__url:focus ~ .icon--left {
+  color: #3366FF;
+}
+
 main .box__search {
   border-radius: 10px;
   font-size: 14px;
@@ -151,10 +159,18 @@ main .box__search {
   transition: box-shadow .5 ease-in, -webkit-box-shadow .5 ease-in;
 }
 
+main .box__search ~ .icon--left {
+  color: #CBCCCE;
+}
+
 main .box__search:focus {
   outline: none;
   -webkit-box-shadow: 0 3px 10px -4px;
           box-shadow: 0 3px 10px -4px;
+}
+
+main .box__search:focus ~ .icon--left {
+  color: #3366FF;
 }
 
 main .box__search::-webkit-input-placeholder {

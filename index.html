@@ -69,7 +69,11 @@
                   <div class="col-md align-self-end">
                      <p class="title__name h1">Find<span>T</span>ext</p>
                      <p>Find the information you want in seconds</p>
-                     FindText is a video text search site created specifically by <a href="https://github.com/jefrydco/awesome-cari-teks-video">Jefry Dewangga</a>. This is the basic submission of the vuejs webinar. and this is my one-page application. The deadline is August 8, 2020. I hope I can be chosen as the best . Everything I do is documented in the medium and I upload the design in the behance. thank you
+                     FindText is a video text search site created specifically by <a
+                        href="https://github.com/jefrydco/awesome-cari-teks-video">Jefry Dewangga</a>. This is the basic
+                     submission of the vuejs webinar. and this is my one-page application. The deadline is August 8,
+                     2020. I hope I can be chosen as the best . Everything I do is documented in the medium and I upload
+                     the design in the behance. Thank you
                   </div>
                </div>
             </section>
@@ -77,22 +81,26 @@
             <secttion class="box">
                <div class="row justify-content-center">
                   <div class="col-12 mb-lg-5 mb-md-4 mb-3">
+                     <input type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__url"
+                        placeholder="Hi , paste your video url here" v-model="url">
+
                      <div class="box__icon icon--left">
                         <ion-icon name="globe-outline"></ion-icon>
                      </div>
-                     <input type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__url"
-                        placeholder="Hi , paste your video url here" v-model="url">
+
                      <div @click="clearUrl" class="box__icon icon--right">
                         <ion-icon class="url" name="close-outline" size="small"></ion-icon>
                      </div>
                   </div>
 
                   <div class="col-lg-8 col">
+                     <input v-model="keyword" type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__search"
+                        placeholder="Search what you want..">
+                        
                      <div class="box__icon icon--left">
                         <ion-icon name="search-outline"></ion-icon>
                      </div>
-                     <input v-model="keyword" type="text" class="border-0 py-3 pl-5 pr-5 px-4 box__search"
-                        placeholder="Search what you want..">
+
                      <div @click="clear" class="box__icon icon--right">
                         <ion-icon class="keyword" name="close-outline" size="small"></ion-icon>
                      </div>
@@ -195,9 +203,9 @@
       new Vue({
          el: '#app',
          data: {
-            url: 'https://www.youtube.com/watch?v=klnvttPfOUM',
+            // url: 'https://www.youtube.com/watch?v=klnvttPfOUM',
             searchResult: false,
-            // url: '',
+            url: '',
             keyword: '',
             listResults: [],
             pagination: {
@@ -258,7 +266,9 @@
                location.href = 'https://github.com/dottomCode/submission-vuejs-app'
             },
             clearUrl() {
-               this.url = ' '
+               this.url = ''
+               this.keyword = ''
+               this.clearAll()
             },
             clear() {
                this.keyword = ''

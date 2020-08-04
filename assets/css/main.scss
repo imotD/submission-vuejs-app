@@ -120,13 +120,22 @@ main {
          font-size: 14px;
          width: 100%;
 
+         ~.icon--left {
+            color: #CBCCCE;
+         }
+
          &::placeholder {
             color: #CBCCCE;
          }
 
          &:focus {
             outline: none;
+
+            ~.icon--left {
+               color: $h1;
+            }
          }
+
       }
 
       &__search {
@@ -136,10 +145,17 @@ main {
          box-shadow: 0 2px 7px -4px;
          transition: box-shadow .5 ease-in;
 
+         ~.icon--left {
+            color: #CBCCCE;
+         }
+
          &:focus {
             outline: none;
             box-shadow: 0 3px 10px -4px;
 
+            ~.icon--left {
+               color: $h1;
+            }
          }
 
          &::placeholder {
