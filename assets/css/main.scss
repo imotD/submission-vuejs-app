@@ -166,6 +166,13 @@ main {
    }
 
    .result {
+
+      .cvt-highlight {
+         color: $ping;
+         font-weight: 700;
+         background-color: transparent;
+      }
+
       &__pagination {
 
          &--btn {

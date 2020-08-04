@@ -127,29 +127,29 @@
                         </li>
                      </ul>
 
-                     <div class="py-2 row align-items-center result__pagination" v-if="pagination.total >= 1">
-                        <div class="col">
+                     <div class="py-2 row align-items-md-center result__pagination" v-if="pagination.total >= 1">
+                        <div class="col-md-6 text-md-left text-center">
                            <p class="mb-0">Page {{pagination.page}} of {{pagination.pageLast}} </p>
                         </div>
 
-                        <div class="col text-right result__pagination--btn d-flex justify-content-end">
+                        <div class="col-md-6 text-md-right text-center result__pagination--btn d-md-flex justify-content-end py-md-0 py-3">
                            <button @click="navigation('first')" :disabled="!pagination['first']"
-                              class="btn btn-ic d-flex align-items-center">
+                              class="btn btn-ic d-md-flex align-items-center">
                               <ion-icon name="caret-back-outline"></ion-icon><span class="pl-2">First</span>
                            </button>
 
                            <button @click="navigation('prev')" :disabled="!pagination['prev']"
-                              class="btn btn-ic d-flex align-items-center">
+                              class="btn btn-ic d-md-flex align-items-center">
                               <ion-icon name="chevron-back-outline"></ion-icon>
                            </button>
 
                            <button @click="navigation('next')" :disabled="!pagination['next']"
-                              class="btn btn-ic d-flex align-items-center">
+                              class="btn btn-ic d-md-flex align-items-center">
                               <ion-icon name="chevron-forward-outline"></ion-icon>
                            </button>
 
                            <button @click="navigation('last')" :disabled="!pagination['last']"
-                              class="btn btn-ic d-flex align-items-center">
+                              class="btn btn-ic d-md-flex align-items-center">
                               <span class="pr-2">Last</span>
                               <ion-icon name="caret-forward-outline"></ion-icon>
                            </button>

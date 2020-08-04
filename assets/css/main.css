@@ -189,6 +189,12 @@ main .box__search::placeholder {
   color: #CBCCCE;
 }
 
+main .result .cvt-highlight {
+  color: #FF3D71;
+  font-weight: 700;
+  background-color: transparent;
+}
+
 main .result__pagination--btn .btn-ic {
   border-color: #F7F8FA;
   margin: 0 3px;
