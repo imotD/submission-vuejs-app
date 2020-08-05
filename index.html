@@ -113,11 +113,11 @@
                <div class="row justify-content-center">
                   <div class="col-lg-8">
                      <div class="alert alert-primary" role="alert" v-if="pagination.total >= 1 ">
-                        🤩 Gotcha! <b>{{pagination.total}} </b> word results found in FindText
+                        👏 Gotcha! <b>{{pagination.total}} </b> word results found in FindText
                      </div>
                      <div class="alert alert-danger" role="alert" v-else>
                         🙏 Sorry, the word is not available
-                     </div>   
+                     </div>
                      <ul class="list-group list-group-flush">
                         <li class="list-group-item list-group-item-action" v-for="(viewResult, i) in listResults"
                            :key='i'>
@@ -132,10 +132,12 @@
                            <p class="mb-0">Page {{pagination.page}} of {{pagination.pageLast}} </p>
                         </div>
 
-                        <div class="col-md-6 text-md-right text-center result__pagination--btn d-md-flex justify-content-end py-md-0 py-3">
+                        <div
+                           class="col-md-6 text-md-right text-center result__pagination--btn d-md-flex justify-content-end py-md-0 py-3">
                            <button @click="navigation('first')" :disabled="!pagination['first']"
                               class="btn btn-ic d-md-flex align-items-center">
-                              <ion-icon name="caret-back-outline"></ion-icon><span class="pl-2">First</span>
+                              <ion-icon name="caret-back-outline"></ion-icon>
+                              <span class="pl-2">First</span>
                            </button>
 
                            <button @click="navigation('prev')" :disabled="!pagination['prev']"
@@ -210,6 +212,16 @@
    </script>
    <script src="assets/js/script.js"></script>
    <script>
+      // Vue.component('iconweb', {
+      //    template: '#iconweb',
+      //    props: ['nmicon'],
+      //    data: function () {
+      //       return this.nmicon;
+      //    }
+      //    // template: `<ion-icon :name="nmicon">iconweb</ion-icon>`
+      // })
+      Vue.config.ignoredElements = [/^ion-/]
+
       new Vue({
          el: '#app',
          data: {
@@ -225,7 +237,7 @@
                next: null,
                total: 0,
                page: null,
-               pageLast:null,
+               pageLast: null,
 
             }
          },
@@ -296,7 +308,7 @@
                   next: null,
                   total: 0,
                   page: null,
-                  pageLast:null
+                  pageLast: null
                }
             }
          }

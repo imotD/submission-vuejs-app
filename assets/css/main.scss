@@ -10,7 +10,7 @@
 $box : #F7F8FA;
 $h1 : #3366FF;
 $txt-title :#0C1E55;
-$txt-grey :#DCDEE2;
+$txt-grey :#020202;
 $input: #EDF0F5;
 $ping: #FF3D71;
 
@@ -21,7 +21,7 @@ body {
 header {
    nav {
       a {
-         color: $txt-grey !important;
+         color: #DCDEE2 !important;
 
          &:hover {
             color: $h1 !important;
