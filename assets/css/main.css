@@ -263,6 +263,9 @@ footer a:hover {
 }
 
 @media (max-width: 575.98px) {
+  footer {
+    margin-top: 17rem;
+  }
   footer .brand--img img {
     width: 15rem;
   }

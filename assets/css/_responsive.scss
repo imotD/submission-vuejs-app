@@ -44,6 +44,8 @@ $ping: #FF3D71;
 
 @media (max-width: 575.98px) {
    footer {
+      margin-top: 17rem;
+
       .brand--img {
          img {
             width: 15rem;
@@ -52,6 +54,4 @@ $ping: #FF3D71;
    }
 }
 
-@media(max-width: 425px) {
-   
-}
+@media(max-width: 425px) {}
