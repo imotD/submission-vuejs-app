@@ -29,24 +29,10 @@
                      <li class="nav-item d-md-block d-none">
                         <a class="nav-link disabled">Support me on :</a>
                      </li>
-                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center px-2" href="https://www.behance.net/dottomstyleart"
-                           target="_blank" rel="noopener">
-                           <ion-icon name="logo-behance" class="pr-2"></ion-icon>
-                           <span class=" d-md-block d-none">Behance</span>
-                        </a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center px-2" href="https://medium.com/@tommyalhamra">
-                           <ion-icon name="logo-medium" class="pr-2"></ion-icon>
-                           <span class=" d-md-block d-none">Medium</span>
-                        </a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center px-2" href="https://github.com/dottomCode"
-                           target="_blank" rel="noopener">
-                           <ion-icon name="logo-github" class="pr-2"></ion-icon>
-                           <span class=" d-md-block d-none">Github</span>
+                     <li class="nav-item" v-for="l in link">
+                        <a class="nav-link d-flex align-items-center px-2" :href="l.url" target="_blank" rel="noopener">
+                           <ion-icon :name="l.icon" class="pr-2"></ion-icon>
+                           <span class="d-md-block d-none">{{l.name}}</span>
                         </a>
                      </li>
                   </ul>
@@ -213,6 +199,22 @@
          el: '#app',
          data: {
             // url: 'https://www.youtube.com/watch?v=klnvttPfOUM',
+            link: [{
+                  url: 'https://www.behance.net/dottomstyleart',
+                  icon: 'logo-behance',
+                  name: 'Behance'
+               },
+               {
+                  url: 'https://medium.com/@tommyalhamra',
+                  icon: 'logo-medium',
+                  name: 'Medium'
+               },
+               {
+                  url: 'https://github.com/imotd',
+                  icon: 'logo-github',
+                  name: 'Github'
+               }
+            ],
             searchResult: false,
             url: '',
             keyword: '',
