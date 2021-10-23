@@ -20,7 +20,7 @@ Dokumentasi Lengkap bisa cek di [Medium](https://medium.com/@tommyalhamra/single
 - Responsive
 
 
-## Live Apps
+## Demo Apps
 http://findtext.netlify.app/
 
 ### Semua aplikasi web Vue.js yang telah dikirimkan akan ditampilkan pada repositori berikut:
